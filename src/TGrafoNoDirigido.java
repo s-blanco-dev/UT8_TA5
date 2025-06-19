@@ -12,6 +12,9 @@ public class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigido
     public TGrafoNoDirigido(Collection<TVertice> vertices, Collection<TArista> aristas) {
         super(vertices, aristas);
         lasAristas.insertarAmbosSentidos(aristas);
+        for (TArista arista:aristas){
+            insertarArista(arista);
+        }
         contador=0;
 
     }
@@ -21,6 +24,10 @@ public class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigido
         boolean tempbool = false;
         TArista arInv = new TArista(arista.getEtiquetaDestino(), arista.getEtiquetaOrigen(), arista.getCosto());
         tempbool = (super.insertarArista(arista) && super.insertarArista(arInv));
+        if (tempbool) {
+            lasAristas.add(arista);
+            lasAristas.add(arInv);
+        }
         return tempbool;
     }
 
@@ -50,7 +57,7 @@ public class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigido
             TArista aristaMin=pq.poll();
 
             if(visitados.contains(aristaMin.getEtiquetaDestino())) continue;
-            mst.insertarArista(aristaMin);
+            mst.getLasAristas().add(aristaMin);
             Comparable nuevoVertice=aristaMin.getEtiquetaDestino();
             visitados.add(nuevoVertice);
             for(TArista arista:lasAristas) {
@@ -91,7 +98,7 @@ public class TGrafoNoDirigido extends TGrafoDirigido implements IGrafoNoDirigido
             int destino=mapaIndices.get(arista.getEtiquetaDestino());
 
             if (ds.find(origen)!=ds.find(destino)) {
-                mst.insertarArista(arista);
+                mst.getLasAristas().add(arista);
                 ds.union(origen,destino);
                 aristasAgregadas.add(clave1);
                 if (mst.getLasAristas().size()==this.getVertices().size() - 1)

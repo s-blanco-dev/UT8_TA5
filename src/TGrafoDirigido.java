@@ -13,9 +13,7 @@ public class TGrafoDirigido implements IGrafoDirigido {
         for (TVertice vertice : vertices) {
             insertarVertice(vertice.getEtiqueta());
         }
-        for (TArista arista : aristas) {
-            insertarArista(arista);
-        }
+
     }
 
     /**

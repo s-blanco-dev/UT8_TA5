@@ -74,7 +74,6 @@ public class TAristas extends LinkedList<TArista> {
     }
 
     void insertarAmbosSentidos(Collection<TArista> aristas) {
-        TArista tempArista;
         for (TArista ta : aristas) {
             this.add(ta);
             this.add(ta.aristaInversa());
