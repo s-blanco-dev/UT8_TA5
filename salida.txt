@@ -1,0 +1,10 @@
+Número de Bacon de John_Goodman: 4
+Número de Bacon de Tom_Cruise: 4
+Número de Bacon de Jason_Statham: 4
+Número de Bacon de Lukas_Haas: 5
+Número de Bacon de Djimon_Hounsou: 6
+Número de Bacon de John_Goodman: 4
+Número de Bacon de Tom_Cruise: 4
+Número de Bacon de Jason_Statham: 4
+Número de Bacon de Lukas_Haas: 5
+Número de Bacon de Djimon_Hounsou: 6

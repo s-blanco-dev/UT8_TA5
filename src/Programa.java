@@ -1,14 +1,26 @@
 public class Programa {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // cargar grafo con actores y relaciones
-        TGrafoNoDirigido gnd = UtilGrafos.cargarGrafo("src/actores.csv", "src/en_pelicula.csv",false, TGrafoNoDirigido.class);
-        System.out.println(gnd.numBacon("Harrison_Ford"));
-        System.out.println(gnd.numBacon("Jason_Statham"));
-        // invocar a numBacon como indica la letra y mostrar en consola el resultado
-    }
+        TGrafoNoDirigido gnd = UtilGrafos.cargarGrafo("src/actores.csv", "src/en_pelicula.csv", false, TGrafoNoDirigido.class);
 
+        String[] actores = {
+                "John_Goodman",
+                "Tom_Cruise",
+                "Jason_Statham",
+                "Lukas_Haas",
+                "Djimon_Hounsou"
+        };
+        StringBuilder salida = new StringBuilder();
+
+        for (String actor : actores) {
+            int bacon = gnd.numBacon(actor);
+            String linea = "Número de Bacon de " + actor + ": " + bacon;
+
+            System.out.println(linea);
+            salida.append(linea).append("\n");
+        }
+
+        String[] lineas = salida.toString().split("\n");
+        ManejadorArchivosGenerico.escribirArchivo("salida.txt", lineas);
+    }
 }
+
